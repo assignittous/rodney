@@ -1,0 +1,22 @@
+{
+  "name": "rodney",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/assignittous/rodney.git"
+  },
+  "author": "Steven Ng",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/assignittous/rodney/issues"
+  },
+  "homepage": "https://github.com/assignittous/rodney",
+  "dependencies": {
+    "node-wit": "^2.0.0"
+  }
+}
