@@ -17,6 +17,13 @@
   },
   "homepage": "https://github.com/assignittous/rodney",
   "dependencies": {
+    "coffee-script": "^1.9.3",
+    "cson": "^3.0.1",
+    "gulp": "^3.9.0",
+    "gulp-coffee": "^2.3.1",
+    "gulp-cson": "^0.3.0",
+    "gulp-inject-string": "0.0.2",
+    "gulp-plumber": "^1.0.1",
     "node-wit": "^2.0.0"
   }
 }
