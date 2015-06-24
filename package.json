@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "description": "",
   "main": "index.js",
+  "bin": {
+    "rodney": "./rodney.js"
+  },  
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,7 +20,9 @@
   },
   "homepage": "https://github.com/assignittous/rodney",
   "dependencies": {
+    "chalk": "^1.0.0",
     "coffee-script": "^1.9.3",
+    "commander": "^2.8.1",
     "cson": "^3.0.1",
     "del": "^1.2.0",
     "gulp": "^3.9.0",
@@ -26,6 +31,11 @@
     "gulp-inject-string": "0.0.2",
     "gulp-plumber": "^1.0.1",
     "gulp-task-master": "^1.0.0",
-    "node-wit": "^2.0.0"
+    "inquirer": "^0.8.5",
+    "knwl.js": "^1.0.2",
+    "natural": "^0.2.1",
+    "nlp_compromise": "^1.1.2",
+    "node-wit": "^2.0.0",
+    "sugar": "^1.4.1"
   }
 }

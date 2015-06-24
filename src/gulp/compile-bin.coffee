@@ -16,14 +16,16 @@ inject = require "gulp-inject-string"
 cson = require "gulp-cson"
 # paths
 
-
-sourcePath = ["./src/index.coffee"]
+mainPath = ["./src/index.coffee"]
+binPath = ["./src/rodney.coffee"]
+watchPath = ["./src/rodney.coffee","./src/index.coffee"]
 targetPath = "./"
 
 module.exports = ()->
 
-  gulp.src(sourcePath).pipe(plumber()).pipe(coffee({bare:true})).pipe(inject.prepend("#!/usr/bin/env node\n")).pipe(gulp.dest(targetPath))
+  gulp.src(binPath).pipe(plumber()).pipe(coffee({bare:true})).pipe(inject.prepend("#!/usr/bin/env node\n")).pipe(gulp.dest(targetPath))
+  gulp.src(mainPath).pipe(plumber()).pipe(coffee({bare:true})).pipe(gulp.dest(targetPath))
 
   return
 
-module.exports.watch = sourcePath
+module.exports.watch = watchPath
