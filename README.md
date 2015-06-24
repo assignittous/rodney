@@ -10,7 +10,7 @@ For example:
 
 Send me last year's income statement.
 
-Rodney should return an object like this:
+Rodney could return an object like this:
 
 ```
 {
