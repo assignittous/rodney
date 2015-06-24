@@ -1,11 +1,13 @@
 [
   "send me this year's income statement"
-  "send me last quarter's income statement"
-  "send me the income statement for last year"
-  "send me the income satement for last month"
+  "give me last quarter's income statement"
+  "tell me the income statement for last year"
+  "show me the income statement for last month"
   "send me last week's status report"
   "what were sales for the month of july"
   "how many cars were sold in july"
   "how many tires were sold in july, 2014"
   "how many tires were sold last july"
+  "last month's income statement"
+  "tires sold in july 2014"
 ]

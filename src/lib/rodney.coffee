@@ -22,13 +22,37 @@ exports.Rodney =
 
 
   parse: (query)->
-    console.log "rodney says hi"
-    console.log "you asked #{query}" 
-
+    output = {}
+    console.log "============================="
+    console.log "============================="
+    console.log query 
+    console.log "============================="
     
     # console.log config.entities
-    console.log speak.classify(query)
+    classification = speak.classify(query)
+
+    #console.log classification
+    console.log "-----------------------------"
+    intent = ""
+    switch classification.action
+      when "what", "how"
+        intent = "metric"
+      else
+        intent = "other"
+    console.log "-----------------------------"
+    console.log "intent: #{intent}"
+
+    console.log classification.nouns
+    console.log "-----------------------------"
+    console.log classification
     console.log "============================="
+
+    output = 
+      query: query
+      owner: classification.owner || ""
+      guessed_entity: classification.subject || ""
+      entity_type: intent
+      #raw: classification
 
     ###
     sentences = nlp.sentences(query)
@@ -42,6 +66,7 @@ exports.Rodney =
       console.log nlp.pos(query)
 
     ###
+    return output
 
 
 

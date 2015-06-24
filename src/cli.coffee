@@ -10,6 +10,8 @@ inquirer = require "inquirer"
 CSON = require('cson')
 cwd = process.env.PWD || process.cwd()
 
+output = require('./lib/data').Data
+
 
 rodney = require('./lib/rodney').Rodney
 
@@ -84,9 +86,13 @@ subcommand.batch.action ()->
   batch = CSON.parseCSONFile("#{cwd}/samples.cson")
 
   console.log batch
-
+  items = []
   batch.each (item)->
-    rodney.parse item
+    items.push rodney.parse(item)
+
+  console.log items
+
+  output.toCsv "samples.csv", items
 
 result = program.parse(process.argv)
 
