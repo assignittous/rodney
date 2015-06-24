@@ -7,6 +7,8 @@ program = require('commander')
 logger = require('./lib/logger').Logger
 inquirer = require "inquirer"
 
+CSON = require('cson')
+cwd = process.env.PWD || process.cwd()
 
 
 rodney = require('./lib/rodney').Rodney
@@ -75,7 +77,16 @@ subcommand.console.action ()->
 
   ask()
 
+subcommand.batch = program.command 'batch'
 
+subcommand.batch.action ()->
+
+  batch = CSON.parseCSONFile("#{cwd}/samples.cson")
+
+  console.log batch
+
+  batch.each (item)->
+    rodney.parse item
 
 result = program.parse(process.argv)
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-var config, help, inquirer, logger, noOp, pkg, program, result, rodney, subcommand;
+var CSON, config, cwd, help, inquirer, logger, noOp, pkg, program, result, rodney, subcommand;
 
 require('sugar');
 
@@ -10,6 +10,10 @@ program = require('commander');
 logger = require('./lib/logger').Logger;
 
 inquirer = require("inquirer");
+
+CSON = require('cson');
+
+cwd = process.env.PWD || process.cwd();
 
 rodney = require('./lib/rodney').Rodney;
 
@@ -71,6 +75,17 @@ subcommand.console.action(function() {
     }
   };
   return ask();
+});
+
+subcommand.batch = program.command('batch');
+
+subcommand.batch.action(function() {
+  var batch;
+  batch = CSON.parseCSONFile(cwd + "/samples.cson");
+  console.log(batch);
+  return batch.each(function(item) {
+    return rodney.parse(item);
+  });
 });
 
 result = program.parse(process.argv);
