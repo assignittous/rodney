@@ -17,8 +17,8 @@ cson = require "gulp-cson"
 # paths
 
 mainPath = ["./src/index.coffee"]
-binPath = ["./src/rodney.coffee"]
-watchPath = ["./src/rodney.coffee","./src/index.coffee"]
+binPath = ["./src/cli.coffee"]
+watchPath = ["./src/cli.coffee","./src/index.coffee"]
 targetPath = "./"
 
 module.exports = ()->
