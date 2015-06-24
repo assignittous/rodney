@@ -30,8 +30,7 @@ coverage
 ############################
 # Dev exclusions
 ############################
-config.rodney.cson*
-rodney.dictionary.cson
+config.*.cson*
 *.bak
 *.csv
 _rodney
