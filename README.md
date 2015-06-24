@@ -8,14 +8,14 @@ The end goal of Rodney is to take a block of text and try to identify *what* a u
 
 For example:
 
-Send me last year's income statement.
+`Send me last year's income statement.`
 
 Rodney could return an object like this:
 
 ```
 {
   entity: "income statement"
-  parameter: "2014-12-31"
+  period: "2014-12-31"
 
 }
 ```

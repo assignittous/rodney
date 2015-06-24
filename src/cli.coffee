@@ -6,10 +6,10 @@ program = require('commander')
 #init = require("../lib/init").Init
 logger = require('./lib/logger').Logger
 inquirer = require "inquirer"
-config = require('./lib/configuration').Configuration
 
 
-rodney = require './lib/rodney'
+
+rodney = require('./lib/rodney').Rodney
 
 noOp = ()-> 
   console.log "Nothing ran, couldn't understand your command"
@@ -54,7 +54,7 @@ subcommand.console.action ()->
       type: 'input'
       name: 'request'
       message: 'Say Something to Rodney'
-      default: "bye"
+      default: "Send me last year's income statement"
 
     }
   ]
@@ -68,7 +68,7 @@ subcommand.console.action ()->
         if ["quit","exit","bye"].any(response.request.toLowerCase())
           quit = true
         else
-          console.log response.request
+          rodney.parse response.request
           ask()
     else
       console.log "QUIT"

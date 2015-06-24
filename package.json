@@ -5,7 +5,7 @@
   "main": "index.js",
   "bin": {
     "rodney": "./cli.js"
-  },  
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -36,6 +36,7 @@
     "natural": "^0.2.1",
     "nlp_compromise": "^1.1.2",
     "node-wit": "^2.0.0",
+    "speakeasy-nlp": "^0.2.2",
     "sugar": "^1.4.1"
   }
 }

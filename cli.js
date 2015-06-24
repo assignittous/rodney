@@ -11,9 +11,7 @@ logger = require('./lib/logger').Logger;
 
 inquirer = require("inquirer");
 
-config = require('./lib/configuration').Configuration;
-
-rodney = require('./lib/rodney');
+rodney = require('./lib/rodney').Rodney;
 
 noOp = function() {
   return console.log("Nothing ran, couldn't understand your command");
@@ -54,7 +52,7 @@ subcommand.console.action(function() {
       type: 'input',
       name: 'request',
       message: 'Say Something to Rodney',
-      "default": "bye"
+      "default": "Send me last year's income statement"
     }
   ];
   quit = false;
@@ -64,7 +62,7 @@ subcommand.console.action(function() {
         if (["quit", "exit", "bye"].any(response.request.toLowerCase())) {
           return quit = true;
         } else {
-          console.log(response.request);
+          rodney.parse(response.request);
           return ask();
         }
       });
