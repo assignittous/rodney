@@ -43,9 +43,15 @@ exports.Rodney =
     console.log "intent: #{intent}"
 
     console.log classification.nouns
-    console.log "-----------------------------"
-    console.log classification
-    console.log "============================="
+    #console.log "-----------------------------"
+    #console.log classification
+    #console.log "============================="
+
+
+    ### 
+      With speakeasy, the best first kick at the can is using the classification.nouns
+    ###
+
 
     output = 
       query: query
