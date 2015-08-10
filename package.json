@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/assignittous/rodney",
   "dependencies": {
+    "aitutils": "^0.1.13",
     "chalk": "^1.0.0",
     "coffee-script": "^1.9.3",
     "commander": "^2.8.1",
