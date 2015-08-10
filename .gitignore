@@ -31,6 +31,8 @@ coverage
 # Dev exclusions
 ############################
 config.*.cson*
+tmp.coffee
+
 *.bak
 *.csv
 _rodney
