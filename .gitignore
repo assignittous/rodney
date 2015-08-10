@@ -32,6 +32,7 @@ coverage
 ############################
 config.*.cson*
 tmp.coffee
+tmp.js
 
 *.bak
 *.csv
