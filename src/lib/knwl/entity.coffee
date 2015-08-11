@@ -2,8 +2,9 @@ cson = require "cson"
 aitutils = require("aitutils").aitutils
 file = aitutils.file
 logger = aitutils.logger
+require 'sugar'
 
-Entities = (knwl) ->
+Entity = (knwl) ->
 
 
 
@@ -24,8 +25,11 @@ Entities = (knwl) ->
             entity: entity
             score: synonym.length
           }
-    matches
+
+
+
+    return matches.max('score', true)
 
   return
-module.exports = Entities
+module.exports = Entity
 

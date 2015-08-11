@@ -12,9 +12,10 @@ samples = cson.parseCSONFile("samples.cson")
 parameterClues = cson.parseCSONFile("config.rodney.hints.cson")
 
 knwlInstance = new knwl("english")
-knwlInstance.register('entities', require('./lib/knwl/entities'))
-knwlInstance.register('dates', require('./lib/knwl/dates'))
-parameterSearch = (text, parameters)->
+knwlInstance.register('entity', require('./lib/knwl/entity'))
+knwlInstance.register('single_date', require('./lib/knwl/single_date'))
+knwlInstance.register('date_range', require('./lib/knwl/date_range'))
+knwlInstance.register('period', require('./lib/knwl/period'))
 
 
 
@@ -23,29 +24,26 @@ samples.each (sample)->
   logger.warn sample
   knwlInstance.init(sample)
 
-  entities = knwlInstance.get('entities')
-  console.log "Dictionary Matches"
-  console.log "=----------------="
-  console.log entities
-
-  dates = knwlInstance.get('dates')
-  console.log "Parameter Matches"
-  console.log "=----------------="
-  console.log dates
-
-  ###
-  loadedEntities = cson.parseCSONFile "config.rodney.dictionary.cson"
-    #console.log data
-  console.log "********"
-  #console.log matchDate(sample).date()
-  console.log "********"
-
-  parameterSearch sample.toLowerCase(), parameterClues
-  #console.log e
-  
+  entities = knwlInstance.get('entity')
+  switch entities.length
+    when 0
+      logger.error "You're not asking for something I know about"
+    when 1
+      entity = entities[0].entity
+      name = entity.name
+      type = entities[0].match
+      logger.info name
+      if entity.parameterRules?
+          # todo- dynamically load
+        knwlInstance.register(entity.parameterRules, require("./lib/knwl/#{entity.parameterRules}"))
+        runParameters = knwlInstance.get(entity.parameterRules)
+        console.log runParameters
+      else
+        logger.warn "This report has no parameter rules"
 
 
-  console.log "------"
-  console.log " "
-  # sample.has
-  ###
+
+    else
+      logger.error "Too ambiguous. Ask again"
+
+
