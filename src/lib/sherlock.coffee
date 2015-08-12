@@ -57,6 +57,9 @@ Sherlock = do ->
     timeMatch = false
     strNummed = helpers.strToNum(str)
     # parse date
+    console.log "----parser"
+    console.log strNummed
+    console.log "-----/"
     if dateMatch = matchDate(strNummed, time, startTime)
       strNummed = strNummed.replace(new RegExp(dateMatch), '')
       str = str.replace(new RegExp(helpers.numToStr(dateMatch)), '')
@@ -223,11 +226,15 @@ Sherlock = do ->
           return false
     else if match = str.match(patterns.inRelativeDateFromRelativeDate)
       if helpers.relativeDateMatcher(match[4], time) and helpers.inRelativeDateMatcher(match[1], match[2], match[3], time)
+        console.log "test relative A"
         return match[0]
       else
         return false
     else if match = str.match(patterns.relativeDate)
       if helpers.relativeDateMatcher(match[1], time)
+        console.log "---match"
+        console.log match
+        console.log "test relative B"
         return match[0]
       else
         return false
@@ -331,13 +338,13 @@ Sherlock = do ->
           
           return true
         when 'this month'
+          adjusted = Date.create().endOfMonth().endOfDay()
           time.setFullYear now.getFullYear(), now.getMonth(), now.getDate()
           
           return true
         when 'this year'
-          time.setFullYear now.getFullYear(), now.getMonth(), now.getDate()
+          adjusted = Date.create().endOfYear().endOfDay()
           
-          return true
         when 'tom'
           time.setFullYear now.getFullYear(), now.getMonth(), now.getDate() + 1
           
@@ -375,10 +382,14 @@ Sherlock = do ->
         when 'day before yesterday'
           time.setFullYear now.getFullYear(), now.getMonth(), now.getDate() - 2
           
-          return true
+
         else
           return false
-      return
+      time.setFullYear adjusted.getFullYear(), adjusted.getMonth(), adjusted.getDate()
+      time.setTime adjusted.getTime()
+      console.log "TIME"
+      console.log time
+      return true
     inRelativeDateMatcher: (num, scale, ago, time) ->
       # if we matched 'a' or 'an', set the number to 1
       if isNaN(num)

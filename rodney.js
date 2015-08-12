@@ -45,8 +45,7 @@ samples.each(function(sample) {
       logger.info(name);
       if (entity.parameterRules != null) {
         knwlInstance.register(entity.parameterRules, require("./lib/knwl/" + entity.parameterRules));
-        runParameters = knwlInstance.get(entity.parameterRules);
-        return console.log(runParameters);
+        return runParameters = knwlInstance.get(entity.parameterRules);
       } else {
         return logger.warn("This report has no parameter rules");
       }

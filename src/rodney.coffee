@@ -37,7 +37,7 @@ samples.each (sample)->
           # todo- dynamically load
         knwlInstance.register(entity.parameterRules, require("./lib/knwl/#{entity.parameterRules}"))
         runParameters = knwlInstance.get(entity.parameterRules)
-        console.log runParameters
+        #console.log runParameters
       else
         logger.warn "This report has no parameter rules"
 
